@@ -1,0 +1,40 @@
+﻿<Page
+    x:Class="App5.qrCode"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:App5"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Page.Transitions>
+        <TransitionCollection>
+            <EntranceThemeTransition/>
+        </TransitionCollection>
+    </Page.Transitions>
+
+    <Grid Background="#80cd3d">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Column="0" Grid.Row="0" Text="QR Code" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Center"
+                   FontSize="50" Margin="10 0 0 0" FontWeight="SemiBold"/>
+
+        <TextBlock Grid.Column="1" Grid.Row="1"
+                   Text="Your QR Code is displayed below. You can scan this code with your mobile device to set up your account or show it to a doctor/pharmacy so they can access your details."
+                   Foreground="White" FontSize="25"
+                   TextWrapping="Wrap"
+                   Margin="10 10 10 10"/>
+
+        <StackPanel Grid.Column="1" Grid.Row="1" Background="White" VerticalAlignment="Center" HorizontalAlignment="Center">
+
+            <Image Source="/Resources/menuIcons/qrCode.png" MaxHeight="350" MaxWidth="350"/>
+
+        </StackPanel>
+    </Grid>
+</Page>

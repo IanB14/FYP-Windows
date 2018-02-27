@@ -5,8 +5,15 @@
     xmlns:local="using:App5"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:utils="using:App5.Converters"
     mc:Ignorable="d">
 
+    <Page.Resources>
+        <utils:nameConverterClass x:Key="nameConverter"/>
+        <utils:pickupConverterClass x:Key="pickupConverter"/>
+    </Page.Resources>
+
+    
     <Page.Transitions>
         <TransitionCollection>
             <EntranceThemeTransition/>
@@ -16,81 +23,98 @@
 
     <ScrollViewer IsScrollInertiaEnabled="True" VerticalScrollBarVisibility="Auto">
 
-    <Grid x:Name="grid1" Background="#80cd3d">
+        <Grid x:Name="grid1" Background="#80cd3d">
 
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Top">
                 <TextBlock Text="Prescriptions" Foreground="White" FontSize="50" Height="60" Width="300"  Margin="10"/>
-                <HyperlinkButton Content="Active" Foreground="White" Margin="10 30 10 10" FontSize="20"/>
-                <HyperlinkButton Content="Inactive" Foreground="White" Margin="10 30 10 10" FontSize="20"/>
-                <HyperlinkButton Content="Completed" Foreground="White" Margin="10 30 10 10" FontSize="20"/>
+                <HyperlinkButton x:Name="activeHyperlink" Content="Active" Foreground="White" Margin="10 30 10 10" FontSize="20" Click="activeHyperLink_Click"/>
+                <HyperlinkButton x:Name="inactiveHyperlink" Content="Inactive" Foreground="White" Margin="10 30 10 10" FontSize="20" Click="inactiveHyperLink_Click"/>
+                <HyperlinkButton x:Name="completedHyperlink" Content="Completed" Foreground="White" Margin="10 30 10 10" FontSize="20" Click="completedHyperLink_Click"/>
             </StackPanel>
 
-        
+
             <StackPanel x:Name="stackPanel1" Margin="25 100 25 50">
-            <ListView x:Name="testList" Background="White">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <StackPanel>
-                            <TextBlock Text="{Binding Name}"
+                <ListView x:Name="testList" Background="White">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="{Binding icon}"
+                                       Width="50"
+                                       Margin="0 0 10 0"
+                                       />
+                                <StackPanel>
+                                    <TextBlock x:Name="drugName" 
+                                       Text="{Binding Name}"
                                        Margin="10 0 20 10"
                                        FontSize="24"
                                        FontWeight="SemiBold"
-                                       Foreground="#80cd3d"
+                                       Foreground="{Binding Name, Converter={StaticResource nameConverter}}"
                                        />
-                        <StackPanel Orientation="Horizontal">
-                                    <TextBlock Text="ID Number: "
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="ID Number: "
                                        Margin="10 0 20 10"
                                        FontSize="18"
                                        FontWeight="SemiBold"
-                                       Foreground="DarkGray"/>
-                                    <TextBlock Text="{Binding ID}"
+                                       Foreground="Black"/>
+                                        <TextBlock Text="{Binding ID}"
                                        Margin="10 0 20 10"
                                        FontSize="18"
-                                       Foreground="DarkGray"/>
-                                    <TextBlock Text="Dosage: "
+                                       Foreground="Black"/>
+                                        <TextBlock Text="Dosage: "
                                        FontSize="18"
                                        FontWeight="SemiBold"
-                                       Foreground="DarkGray"/>
-                                    <TextBlock Text="{Binding Dosage}"
+                                       Foreground="Black"/>
+                                        <TextBlock Text="{Binding Dosage}"
                                        Margin="10 0 20 10"
                                        FontSize="18"
-                                       Foreground="DarkGray"/>
-                                    <TextBlock Text="Prescription Length: "
+                                       Foreground="Black"/>
+                                        <TextBlock Text="Prescription Length: "
                                        FontSize="18"
                                        FontWeight="SemiBold"
-                                       Foreground="DarkGray"/>
-                                    <TextBlock Text="{Binding Length}"
+                                       Foreground="Black"/>
+                                        <TextBlock Text="{Binding Length}"
                                        Margin="10 0 20 10"
                                        FontSize="18"
-                                       Foreground="DarkGray"/>
-                                    <TextBlock Text="Available for Pickup? "
-                                       FontSize="18"
-                                       FontWeight="SemiBold"
-                                       Foreground="DarkGray"/>
-                                    <TextBlock Text="{Binding Pickup}"
-                                       Margin="10 0 20 10"
-                                       FontSize="18"
-                                       Foreground="DarkGray"/>
-                                    <TextBlock Text="Instructions: "
-                                       FontSize="18"
-                                       FontWeight="SemiBold"
-                                       Foreground="DarkGray"/>
-                                    <TextBlock Text="{Binding Instructions}"
-                                       Margin="10 0 20 10"
-                                       FontSize="18"
-                                       Foreground="DarkGray"/>
-                                </StackPanel>
-                                </StackPanel>
-                        </DataTemplate>
-                </ListView.ItemTemplate>
-                
-            </ListView>
-        </StackPanel>
-            
-            
-            
-    </Grid>
+                                       Foreground="Black"/>
+                                    </StackPanel>
 
+
+                                    <StackPanel x:Name="pickupText" Orientation="Horizontal">
+                                        <TextBlock
+                                       Text="{Binding Pickup}"
+                                       Margin="10 0 20 10"
+                                       FontSize="18"
+                                       FontWeight="SemiBold"
+                                       Foreground="{Binding Pickup, Converter={StaticResource pickupConverter}}"/>
+                                       
+                                    </StackPanel>
+                                </StackPanel>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+
+                </ListView>
+            </StackPanel>
+            <TextBlock x:Name="inactiveTextBlock"
+                       Foreground="White"
+                       FontWeight="SemiBold"
+                       FontSize="20"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       TextAlignment="Center"
+                       Visibility="Collapsed">Inactive prescriptions will appear here.<LineBreak></LineBreak>
+                       Visit your Pharmacy to activate a prescription.</TextBlock>
+
+            <TextBlock x:Name="CompletedTextBlock"
+                       Foreground="White"
+                       FontWeight="SemiBold"
+                       FontSize="20"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       TextAlignment="Center"
+                       Visibility="Collapsed">Completed prescriptions will appear here.<LineBreak></LineBreak>
+                       Prescriptions that are inactive for 3 months are marked as complete.</TextBlock>
+        </Grid>
 
     </ScrollViewer>
 </Page>

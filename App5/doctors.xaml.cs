@@ -26,7 +26,7 @@ namespace App5
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class pharmacies : Page
+    public sealed partial class doctors : Page
     {
         // Used to recycle the map pin icon
         RandomAccessStreamReference mapIconStreamReference;
@@ -34,11 +34,11 @@ namespace App5
 
 
 
-        public pharmacies()
+        public doctors()
         {
             this.InitializeComponent();
 
-            mapIconStreamReference = RandomAccessStreamReference.CreateFromUri(new Uri("ms-appx:///Resources/mapIcons/pharmacyMapPinSMALL.png"));
+            mapIconStreamReference = RandomAccessStreamReference.CreateFromUri(new Uri("ms-appx:///Resources/mapIcons/doctorMapPinSMALL.png"));
             currentPositionStreamReference = RandomAccessStreamReference.CreateFromUri(new Uri("ms-appx:///Resources/mapIcons/userCurrentLocationSMALL.png"));
 
 
@@ -56,7 +56,7 @@ namespace App5
             Debug.WriteLine("Map loaded successfully");
             Geopoint universityOfLimerickLoc = new Geopoint(new BasicGeoposition() { Latitude = 52.6735881, Longitude = -8.572437199999968 });
             myMap.Center = universityOfLimerickLoc;
-            myMap.ZoomLevel = 12;            
+            myMap.ZoomLevel = 12;
         }
 
         private void addUserLocation()
@@ -99,7 +99,7 @@ namespace App5
             MapIcon mapIcon1 = new MapIcon();
             mapIcon1.Location = new Geopoint(new BasicGeoposition { Latitude = 52.6664245, Longitude = -8.553303400000004 });
             mapIcon1.NormalizedAnchorPoint = new Point(0.5, 1.0);
-            mapIcon1.Title = "Lloyd's Pharmacy";
+            mapIcon1.Title = "Doctor 1";
             mapIcon1.Image = mapIconStreamReference;
             mapIcon1.ZIndex = 0;
             myMap.MapElements.Add(mapIcon1);
@@ -107,7 +107,7 @@ namespace App5
             MapIcon mapIcon2 = new MapIcon();
             mapIcon2.Location = new Geopoint(new BasicGeoposition { Latitude = 52.6674095, Longitude = -8.570264899999984 });
             mapIcon2.NormalizedAnchorPoint = new Point(0.5, 1.0);
-            mapIcon2.Title = "Castletroy Pharmacy";
+            mapIcon2.Title = "Doctor 2";
             mapIcon2.Image = mapIconStreamReference;
             mapIcon2.ZIndex = 0;
             myMap.MapElements.Add(mapIcon2);
@@ -115,7 +115,7 @@ namespace App5
             MapIcon mapIcon3 = new MapIcon();
             mapIcon3.Location = new Geopoint(new BasicGeoposition { Latitude = 52.66759769999999, Longitude = -8.575392700000066 });
             mapIcon3.NormalizedAnchorPoint = new Point(0.5, 1.0);
-            mapIcon3.Title = "Castletroy Park Pharmacy";
+            mapIcon3.Title = "Doctor 3";
             mapIcon3.Image = mapIconStreamReference;
             mapIcon3.ZIndex = 0;
             myMap.MapElements.Add(mapIcon3);

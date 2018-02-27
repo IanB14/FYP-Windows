@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -25,6 +26,29 @@ namespace App5
         public account()
         {
             this.InitializeComponent();
+        }
+
+        public class navigationItems
+        {
+            public string title { get; set; }
+            public Symbol Symbol { get; set; }
+        }
+
+        private ObservableCollection<navigationItems> _navItems = new ObservableCollection<navigationItems>()
+        {
+            new navigationItems() { title = "navItem1", Symbol=Windows.UI.Xaml.Controls.Symbol.People },
+            new navigationItems() { title = "navItem2", Symbol=Windows.UI.Xaml.Controls.Symbol.Phone },
+        };
+
+        public ObservableCollection<navigationItems> navItems
+        {
+            get { return _navItems; }
+
+        }
+
+        private void navigationLinks_ItemClick(object sender, ItemClickEventArgs e)
+        {
+
         }
     }
 }

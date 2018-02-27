@@ -14,13 +14,13 @@
     </Page.Transitions>
 
     <Grid Background="#80dc3d">
-        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Padding="10" Margin="10,10,10,10" Orientation="Vertical" >
+        <StackPanel Visibility="Visible" Name="loginControls" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="10" Margin="10,10,10,10" Orientation="Vertical" >
             <StackPanel.Resources>
                 <Style TargetType="TextBox">
                     <Setter Property="Margin" Value="0,5,0,5"/>
                 </Style>
             </StackPanel.Resources>
-            <Image x:Name="image" HorizontalAlignment="Center" Height="100" Margin="0" VerticalAlignment="Center" Width="100" Source="/Resources/hqLogo300.png"/>
+            <Image x:Name="image" HorizontalAlignment="Center" Height="100" Margin="0, 0, 0, 5" VerticalAlignment="Center" Width="100" Source="/Resources/hqLogo300.png"/>
             <TextBox x:Name="username" MaxWidth="500" MinWidth="250" PlaceholderText="Username" SelectionHighlightColor="#FF80DC3D" BorderBrush="#007A7A7A" Background="White" TextChanged="username_TextChanged"/>
             <PasswordBox x:Name="password" MaxWidth="500" MinWidth="250" PlaceholderText="Password" PasswordChanged="password_PasswordChanged" SelectionHighlightColor="#FF80DC3D" BorderBrush="#007A7A7A" Background="White"/>
 
@@ -34,6 +34,12 @@
 
             <TextBlock x:Name="wrongCredentialsTextBox" Text="Incorrect Username or Password" Foreground="#d50000" HorizontalAlignment="Center" Visibility="Collapsed"/>
         </StackPanel>
+
+        <StackPanel x:Name="loginActionTriggered" VerticalAlignment="Center" HorizontalAlignment="Center" Visibility="Collapsed">
+            <TextBlock HorizontalAlignment="Center" Text="Logging you in..." Foreground="White" FontSize="30"/>
+            <ProgressBar Foreground="White" IsIndeterminate="True" Height="20" HorizontalAlignment="Center" Width="150"/>
+        </StackPanel>
+
 
 
 

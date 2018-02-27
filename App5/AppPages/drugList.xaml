@@ -29,7 +29,7 @@
         <TextBlock Grid.Column="0" Grid.Row="0" Text="Drug List" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="50" Margin="10 0 0 0"/>
 
         <StackPanel Grid.Column="1" Grid.Row="0" Orientation="Horizontal">
-            <HyperlinkButton Content="Alhpabetical" Foreground="White" Margin="10 30 10 10" FontSize="20"/>
+            <HyperlinkButton Content="Alphabetical" Foreground="White" Margin="10 30 10 10" FontSize="20"/>
             <HyperlinkButton Content="Drug Type" Foreground="White" Margin="10 30 10 10" FontSize="20"/>
             <HyperlinkButton Content="Interactions" Foreground="White" Margin="10 30 10 10" FontSize="20"/>
         </StackPanel>
@@ -43,7 +43,7 @@
                                        Margin="0 0 0 0"
                                        FontSize="18"
                                        FontWeight="SemiBold"
-                                       Foreground="#80cd3d"
+                                       Foreground="Black"
                                        />
                         </StackPanel>
                     </DataTemplate>
@@ -52,11 +52,86 @@
             </ListView>
         </ScrollViewer>
 
-        <StackPanel Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center">
+        <StackPanel Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" Visibility="Collapsed">
 
             <Image x:Name="placeholderIcon" Source="/Resources/menuIcons/greyMenuIcons/prescriptionsGRAY.png" Height="200"/>
             <TextBlock Text="Choose a Drug" HorizontalAlignment="Center"/>
 
+        </StackPanel>
+
+        <StackPanel Grid.Column="1" Grid.Row="1"  Visibility="Visible">
+            <TextBlock x:Name="drugName"
+                       Text="Drug Name(s)"
+                       HorizontalAlignment="Left"
+                       Padding="10"
+                       Margin="10 10 10 5"
+                       FontSize="30"
+                       FontWeight="SemiBold"
+                       Foreground="#80cd3d"
+                       />
+            <TextBlock x:Name="drugManufacturer"
+                       Text="Manufacturer"
+                       HorizontalAlignment="Left"
+                       Padding="10"
+                       Margin="10 0 10 10"
+                       FontSize="20"
+                       FontWeight="SemiBold"
+                       Foreground="Black"
+                       />
+            <TextBlock x:Name="drugIndications"
+                       Text="Indications"
+                       HorizontalAlignment="Left"
+                       Padding="10"
+                       Margin="10 0 10 10"
+                       FontSize="20"
+                       FontWeight="SemiBold"
+                       Foreground="Black"
+                       />
+            <TextBlock x:Name="drugDosage"
+                       Text="Dosage"
+                       HorizontalAlignment="Left"
+                       Padding="10"
+                       Margin="10 0 10 10"
+                       FontSize="20"
+                       FontWeight="SemiBold"
+                       Foreground="Black"
+                       />
+            <TextBlock x:Name="drugDirections"
+                       Text="Directions"
+                       HorizontalAlignment="Left"
+                       Padding="10"
+                       Margin="10 0 10 10"
+                       FontSize="20"
+                       FontWeight="SemiBold"
+                       Foreground="Black"
+                       />
+            <TextBlock x:Name="drugSideEffects"
+                       Text="Side Effects"
+                       HorizontalAlignment="Left"
+                       Padding="10"
+                       Margin="10 0 10 10"
+                       FontSize="20"
+                       FontWeight="SemiBold"
+                       Foreground="Black"
+                       />
+            <TextBlock x:Name="drugSpecialPrecautions"
+                       Text="Special Precautions"
+                       HorizontalAlignment="Left"
+                       Padding="10"
+                       Margin="10 0 10 10"
+                       FontSize="20"
+                       FontWeight="SemiBold"
+                       Foreground="Black"
+                       />
+            <TextBlock x:Name="Interactions"
+                       Text="Interactions"
+                       HorizontalAlignment="Center"
+                       Padding="10"
+                       Margin="10 0 10 10"
+                       FontSize="30"
+                       FontWeight="SemiBold"
+                       Foreground="Black"
+                       />
         </StackPanel>
 
     </Grid>

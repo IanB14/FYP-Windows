@@ -92,7 +92,7 @@
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="account.xaml.cs">
+    <Compile Include="AppPages\account.xaml.cs">
       <DependentUpon>account.xaml</DependentUpon>
     </Compile>
     <Compile Include="App.xaml.cs">
@@ -110,6 +110,11 @@
     <Compile Include="buttonTest.xaml.cs">
       <DependentUpon>buttonTest.xaml</DependentUpon>
     </Compile>
+    <Compile Include="doctors.xaml.cs">
+      <DependentUpon>doctors.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="pickupConverterClass.cs" />
+    <Compile Include="nameConverterClass.cs" />
     <Compile Include="createAccountPage.xaml.cs">
       <DependentUpon>createAccountPage.xaml</DependentUpon>
     </Compile>
@@ -146,6 +151,7 @@
     <Content Include="Assets\StoreLogo.png" />
     <Content Include="Assets\Wide310x150Logo.scale-200.png" />
     <Content Include="Resources\hqLogo300.png" />
+    <Content Include="Resources\mapIcons\doctorMapPinSMALL.png" />
     <Content Include="Resources\mapIcons\pharmacyMapPin.png" />
     <Content Include="Resources\mapIcons\pharmacyMapPinSMALL.png" />
     <Content Include="Resources\mapIcons\userCurrentLocation.png" />
@@ -157,13 +163,16 @@
     <Content Include="Resources\menuIcons\prescriptions.png" />
     <Content Include="Resources\menuIcons\qrCode.png" />
     <Content Include="Resources\menuIcons\user.png" />
+    <Content Include="Resources\prescriptionItems\diazemulsD.png" />
+    <Content Include="Resources\prescriptionItems\lexaproL.png" />
+    <Content Include="Resources\prescriptionItems\xanaxX.png" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="account.xaml">
+    <Page Include="AppPages\account.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -188,6 +197,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="AppPages\drugList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="doctors.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

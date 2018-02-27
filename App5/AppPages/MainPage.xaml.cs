@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -76,9 +77,57 @@ namespace App5
             this.Frame.Navigate(typeof(pharmacies), new DrillInNavigationTransitionInfo());
         }
 
+        private void doctorsButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(doctors), new DrillInNavigationTransitionInfo());
+        }
+
+
         private void accountButton_Click(object sender, RoutedEventArgs e)
         {
             this.Frame.Navigate(typeof(account), new DrillInNavigationTransitionInfo());
         }
+
+        private async void HyperlinkButton_Click(object sender, RoutedEventArgs e)
+        {
+            ContentDialog aboutPopup = new ContentDialog()
+            {
+                Title = "About",
+                Content = "2017 - 2018. Developed by Ian Burke.",
+                PrimaryButtonText = "Dismiss"
+            };
+
+            await aboutPopup.ShowAsync();
+        }
+
+        private async void HyperlinkButton_Click_1(object sender, RoutedEventArgs e)
+        {
+            ContentDialog logOutPopup = new ContentDialog()
+            {
+                Title = "Log Out",
+                Content = "Are you sure you want to log out?",
+                PrimaryButtonText = "Log Out",
+                SecondaryButtonText = "Dismiss"
+            };
+
+            ContentDialogResult result = await logOutPopup.ShowAsync();
+            if(result == ContentDialogResult.Primary)
+            {
+                this.Frame.Navigate(typeof(loginPage), new DrillInNavigationTransitionInfo());
+            }
+        }
+
+        private async void HyperlinkButton_Click_2(object sender, RoutedEventArgs e)
+        {
+            ContentDialog contactPopup = new ContentDialog()
+            {
+                Title = "Contact",
+                Content = "Contact ian_burke@hotmail.com for bug reports and feature requests",
+                PrimaryButtonText = "Dismiss"
+            };
+
+            await contactPopup.ShowAsync();
+        }
+
     }
 }

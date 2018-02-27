@@ -89,7 +89,7 @@
             </StackPanel>
         </Button>
 
-        <Button x:Name="doctorsButton" Grid.Column="1" Grid.Row="2">
+        <Button x:Name="doctorsButton" Grid.Column="1" Grid.Row="2" Click="doctorsButton_Click">
             <StackPanel>
                 <Image x:Name="icon5" Source="/Resources/menuIcons/doctor.png" HorizontalAlignment="Center"/>
                 <TextBlock x:Name="icon5Text"  Text="Doctors" HorizontalAlignment="Center"/>
@@ -104,11 +104,11 @@
         </Button>
 
 
-        <HyperlinkButton Content="About" Grid.Column="0" Grid.Row="3"/>
+        <HyperlinkButton Content="About" Grid.Column="0" Grid.Row="3" Click="HyperlinkButton_Click"/>
 
-        <HyperlinkButton Content="Log Out" Grid.Column="1" Grid.Row="3"/>
+        <HyperlinkButton Content="Log Out" Grid.Column="1" Grid.Row="3" Click="HyperlinkButton_Click_1"/>
 
-        <HyperlinkButton Content="Contact Us" Grid.Column="2" Grid.Row="3"/>
+        <HyperlinkButton Content="Contact Us" Grid.Column="2" Grid.Row="3" Click="HyperlinkButton_Click_2"/>
     </Grid>
 
 </Page>

@@ -14,62 +14,73 @@
         </TransitionCollection>
     </Page.Transitions>
 
-    <Grid Background="#FF2962FF">
+    <Grid Background="White">
 
         <StackPanel Margin="10 10 10 10" MinHeight="900">
             <StackPanel Margin="10,10,10,10">
-                <TextBlock x:Name="createAccountTitleText" Foreground="White" FontSize="50" HorizontalAlignment="Left" Margin="10,10,10,10" Padding="10,10,10,10" TextWrapping="Wrap" Text="Create Account" VerticalAlignment="Top" />
-                <TextBlock x:Name="infoText" Foreground="White" HorizontalAlignment="Left" Margin="10,10,10,10" Padding="10,10,10,10" TextWrapping="Wrap" VerticalAlignment="Top">Doctor and Pharmacy accounts cannot be created in-app - contact a system administrator to set up a practitioner account<LineBreak/><LineBreak/>Patients can set up accounts using the menu below - all fields are required</TextBlock>
+                <TextBlock x:Name="createAccountTitleText" Foreground="#3d84dc" FontWeight="SemiBold" FontSize="50" HorizontalAlignment="Left" Margin="10,10,10,10" Padding="10,10,10,10" TextWrapping="Wrap" Text="Create Account" VerticalAlignment="Top" />
+                <TextBlock x:Name="infoText" Foreground="Black" HorizontalAlignment="Left" Margin="10,10,10,10" Padding="10,10,10,10" TextWrapping="Wrap" VerticalAlignment="Top">Doctor and Pharmacy accounts cannot be created in-app - contact a system administrator to set up a practitioner account<LineBreak/><LineBreak/>Patients can set up accounts using the menu below - all fields are required</TextBlock>
             </StackPanel>
 
-            <StackPanel Margin="10,10,10,10">
-                <TextBox x:Name="firstNameTextBox" Margin="10,10,10,5" PlaceholderText="First Name">
+            <StackPanel x:Name="textBoxesAndButton">
+                <TextBox x:Name="firstNameTextBox" Margin="10,10,10,5" PlaceholderText="First Name" Width="425" TextChanged="firstNameTextBox_TextChanged">
                     <TextBox.Background>
                         <SolidColorBrush Color="{ThemeResource SystemAltHighColor}"/>
                     </TextBox.Background>
                 </TextBox>
-                <TextBox x:Name="surnameNameTextBox" Margin="10,5,10,5" PlaceholderText="Surname">
+                <TextBox x:Name="surnameNameTextBox" Margin="10,5,10,5" PlaceholderText="Surname" Width="425" TextChanged="surnameNameTextBox_TextChanged">
                     <TextBox.Background>
                         <SolidColorBrush Color="{ThemeResource SystemAltHighColor}"/>
                     </TextBox.Background>
                 </TextBox>
-                <TextBox x:Name="usernameTextBox" Margin="10,5,10,5" PlaceholderText="Username">
+                <TextBox x:Name="usernameTextBox" Margin="10,5,10,5" PlaceholderText="Username" Width="425" TextChanged="usernameTextBox_TextChanged">
                     <TextBox.Background>
                         <SolidColorBrush Color="{ThemeResource SystemAltHighColor}"/>
                     </TextBox.Background>
                 </TextBox>
-                <PasswordBox x:Name="passwordTextBox" Margin="10,5,10,5" PlaceholderText="Password">
+                <PasswordBox x:Name="passwordTextBox" Margin="10,5,10,5" PlaceholderText="Password" Width="425" PasswordChanged="passwordTextBox_PasswordChanged">
                     <PasswordBox.Background>
                         <SolidColorBrush Color="{ThemeResource SystemAltHighColor}"/>
                     </PasswordBox.Background>
                 </PasswordBox>
-                <TextBox x:Name="emailTextBox" Margin="10,5,10,5" PlaceholderText="E-mail Address">
+                <TextBox x:Name="emailTextBox" Margin="10,5,10,5" PlaceholderText="E-mail Address" Width="425" TextChanged="emailTextBox_TextChanged">
                     <TextBox.Background>
                         <SolidColorBrush Color="{ThemeResource SystemAltHighColor}"/>
                     </TextBox.Background>
                 </TextBox>
-                <TextBox x:Name="phoneNumberTextBox" Margin="10,5,10,5"  PlaceholderText="Phone Number">
+                <TextBox x:Name="phoneNumberTextBox" Margin="10,5,10,5"  PlaceholderText="Phone Number" Width="425" TextChanged="phoneNumberTextBox_TextChanged">
                     <TextBox.Background>
                         <SolidColorBrush Color="{ThemeResource SystemAltHighColor}"/>
                     </TextBox.Background>
                 </TextBox>
-                <TextBox x:Name="AddressL1TextBox" Margin="10,5,10,5" PlaceholderText="Address Line 1">
+                <TextBox x:Name="AddressL1TextBox" Margin="10,5,10,5" PlaceholderText="Address Line 1" Width="425" TextChanged="AddressL1TextBox_TextChanged">
                     <TextBox.Background>
                         <SolidColorBrush Color="{ThemeResource SystemAltHighColor}"/>
                     </TextBox.Background>
                 </TextBox>
-                <TextBox x:Name="AddressL2TextBox" Margin="10,5,10,5" PlaceholderText="Address Line 2">
+                <TextBox x:Name="AddressL2TextBox" Margin="10,5,10,5" PlaceholderText="Address Line 2" Width="425" TextChanged="AddressL2TextBox_TextChanged">
                     <TextBox.Background>
                         <SolidColorBrush Color="{ThemeResource SystemAltHighColor}"/>
                     </TextBox.Background>
                 </TextBox>
-                <TextBox x:Name="AddressL3TextBox" Margin="10,5,10,5" PlaceholderText="Address Line 3">
+                <TextBox x:Name="AddressL3TextBox" Margin="10,5,10,5" PlaceholderText="Address Line 3" Width="425" TextChanged="AddressL3TextBox_TextChanged">
                     <TextBox.Background>
                         <SolidColorBrush Color="{ThemeResource SystemAltHighColor}"/>
                     </TextBox.Background>
                 </TextBox>
-                <Button x:Name="createAccountButton" Margin="10,5,10,5" Content="Create Account" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Foreground="White" Background="#00000000"/>
+                <Button x:Name="createAccountButton" Margin="10,5,10,5" Content="Create Account" Background="#3d84dc" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Foreground="White" Width="425" Click="createAccountButton_Click"/>
 
+            </StackPanel>
+
+            <StackPanel x:Name="Spinner" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="10" Margin="10 10 10 10" Visibility="Collapsed">
+                <TextBlock Text="Creating your account..." Foreground="#3d84dc" FontSize="30" FontWeight="SemiBold"/>
+                <ProgressBar Foreground="#3d84dc" IsIndeterminate="True" Height="20" HorizontalAlignment="Center" Width="150"/>
+
+            </StackPanel>
+
+            <StackPanel x:Name="accountCreated" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="10" Margin="10,10,10,10" Visibility="Collapsed">
+                <TextBlock Text="Your account was created successfully." Foreground="#3d84dc" FontWeight="SemiBold" FontSize="30" HorizontalAlignment="Center"/>
+                <TextBlock TextAlignment="Center" x:Name="accountDetails" Foreground="Black" FontSize="20" HorizontalAlignment="Center"/>
             </StackPanel>
 
         </StackPanel>

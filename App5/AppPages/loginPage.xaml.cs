@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -57,14 +58,22 @@ namespace App5
         */
 
 
-        private void loginButton_Click(object sender, RoutedEventArgs e)
+        private async void loginButton_Click(object sender, RoutedEventArgs e)
         {
+            loginControls.Visibility = Visibility.Collapsed;
+            loginActionTriggered.Visibility = Visibility.Visible;
+
+            // Wait 3 seconds after clicking the login button
+            await Task.Delay(TimeSpan.FromSeconds(3));
+
             if (enteredUsername == "IanB14" && enteredPassword == "password") {
                 Debug.WriteLine("Username and Password matched");
                 Frame.Navigate(typeof(MainPage), new DrillInNavigationTransitionInfo());
             }else
             {
                 Debug.WriteLine("Error - Incorrect Username or Password");
+                loginActionTriggered.Visibility = Visibility.Collapsed;
+                loginControls.Visibility = Visibility.Visible;
                 wrongCredentialsTextBox.Visibility = Windows.UI.Xaml.Visibility.Visible;
             }
         }

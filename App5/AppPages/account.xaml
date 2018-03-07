@@ -13,20 +13,11 @@
         </TransitionCollection>
     </Page.Transitions>
 
-    <!--
-    <Page.Resources>
-        <DataTemplate x:Key="NavLinkItemTemplate" x:DataType="NavItems">
-            <StackPanel Orientation="Horizontal" Margin="2,0,0,0">
-                <SymbolIcon Symbol="{x:Bind Symbol}" />
-                <TextBlock Text="{x:Bind Label}" Margin="24,0,0,0" VerticalAlignment="Center" />
-            </StackPanel>
-        </DataTemplate>
-    </Page.Resources> -->
-
-            <Grid Background="#80cd3d">
+    <Grid Background="#80cd3d">
 
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="5*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="100"/>
@@ -43,39 +34,212 @@
                    Margin="10 10 10 10"
                    FontSize="50"/>
 
-        <SplitView Grid.Column="1"
-                   Grid.Row="1"
-                   IsPaneOpen="True"
-                   DisplayMode="Inline"
-                   OpenPaneLength="300"
-                   CompactPaneLength="56"
-                   Margin="10 10 10 10">
-            <SplitView.Pane>
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="Auto"/>
-                    </Grid.RowDefinitions>
-                
 
-                <TextBlock Text="Settings" FontSize="30" Margin="10"/>
-                    <ListView x:Name="navigationLinks"
-                              SelectionMode="Single"
+
+
+
+        <TextBlock Grid.Column="0" Grid.Row="1" Text="Settings" FontSize="30" Margin="10 10 10 10" Padding="10"/>
+        <ListView x:Name="navigationLinks"
+                              Background="White"
+                              Grid.Column="0"
                               Grid.Row="1"
-                              VerticalAlignment="Stretch"
-                              ItemClick="navigationLinks_ItemClick"
                               IsItemClickEnabled="True"
-                              ItemsSource="{x:Bind navItems}"
-                        />
-                    <!--this line is missing above:  ItemTemplate="{StaticResource NavLinkItemTemplate}"-->
-                </Grid>
+                              SelectionMode="Single"
+                              VerticalAlignment="Stretch"
+                              SelectionChanged="navigationLinks_SelectionChanged"
+                            >
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <TextBlock Text="{Binding title}"
+                                   Margin="10"
+                                   />
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
 
-            </SplitView.Pane>
+        <StackPanel Grid.Column="1" Grid.Row="1" x:Name="defaultView" Background="White" Visibility="Visible"/>
+        
+        <StackPanel x:Name="defaultViewIcons" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <Image Source="/Resources/menuIcons/greyMenuIcons/userGRAY.png" Width="200"/>
+            <TextBlock Text="Choose an Option" HorizontalAlignment="Center"/>
+        </StackPanel>
+
+        <StackPanel Grid.Column="1" Grid.Row="1" x:Name="personalInformationPanel" Background="White" Visibility="Collapsed">
+
+            <TextBlock x:Name="personalInformationTitle"
+                               Text="Personal Information"
+                               Margin="10 10 10 10"
+                               Padding="10"
+                               FontSize="30"
+                               FontWeight="SemiBold"
+                               Foreground="#80dc3d"/>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock x:Name="yourInfoTextBlock"
+                               Text="Your info"
+                               Padding="10"
+                               Margin="10 10 0 10"
+                               FontSize="20"/>
+                <HyperlinkButton
+                            x:Name="infoHyperlinkEdit"
+                            Content="edit"
+                            FontWeight="SemiBold"
+                            Foreground="#80dc3d"
+                            Padding="10"
+                            Margin="-10 10 10 5"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <TextBlock x:Name="infoName" Text="Ian Burke" Margin="10 0 10 0"/>
+                <TextBlock x:Name="infoEmail" Text="ian_burke@hotmail.com" Margin="10 0 10 0"/>
+                <TextBlock x:Name="infoUsername" Text="IanB14" Margin="10 0 10 0"/>
+                <TextBlock x:Name="infoPhoneNo" Text="0851585948" Margin="10 0 10 0"/>
+                <TextBlock x:Name="infoAccountType" Text="Patient Account" Margin="10 0 10 0"/>
+            </StackPanel>
+
+            <StackPanel>
+
+
+            </StackPanel>
+
+        </StackPanel>
+        <StackPanel Grid.Column="1" Grid.Row="1" x:Name="contactInformationPanel" Background="White" Visibility="Collapsed">
+            <TextBlock x:Name="contactPreferencesTitle"
+                               Text="Contact Preferences"
+                               Margin="10 10 10 10"
+                               Padding="10"
+                               FontSize="30"
+                               FontWeight="SemiBold"
+                               Foreground="#80dc3d"/>
+            <TextBlock x:Name="emailAndNotificationsText"
+                       Text="E-mail and Notifications"
+                       FontSize="20"
+                       Padding="10"
+                       Margin="10 10 10 10"
+                       />
+            <TextBlock x:Name="emailInformation"
+                       Text="Use the switches below to configure your e-mail and device notification preferences. By default, these are all set to ON."
+                       Margin="20 0 0 0"
+                       TextWrapping="Wrap"
+                       />
+
+            <ToggleButton Content="Toggle All"
+                          Margin="20 10 10 10"
+                          Padding="10"/>
+
+           
             
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10" Padding="10 10 10 10">
+
+                <StackPanel>
+                    <TextBlock Text="Option" Padding="10" Margin="10 10 10 10" FontWeight="SemiBold"/>
+                    <TextBlock Text="New Prescription" VerticalAlignment="Center" Padding="10" Margin="10 10 10 10"/>
+                    <TextBlock Text="Prescription ready for Pickup" VerticalAlignment="Center" Padding="10" Margin="10 10 10 10"/>
+                    <TextBlock Text="Pickup Overdue" VerticalAlignment="Center" Padding="10" Margin="10 10 10 10"/>
+                    <TextBlock Text="Doctor/Pharmacy Contact" VerticalAlignment="Center" Padding="10" Margin="10 10 10 10"/>
+                </StackPanel>
+
+
+                <StackPanel>
+                    <TextBlock Text="E-mail" Padding="10" Margin="10 10 10 10" FontWeight="SemiBold"/>
+                <ToggleSwitch IsOn="True" Margin="10 10 10 10"/>
+                <ToggleSwitch IsOn="True" Margin="10 10 10 10"/>
+                <ToggleSwitch IsOn="True" Margin="10 10 10 10"/>
+                <ToggleSwitch IsOn="True" Margin="10 10 10 10"/>
+                </StackPanel>
+
+                <StackPanel>
+                    <TextBlock Text="Device" Padding="10" Margin="10 10 10 10" FontWeight="SemiBold"/>
+                    <ToggleSwitch IsOn="True" Margin="10 10 10 10"/>
+                    <ToggleSwitch IsOn="True" Margin="10 10 10 10"/>
+                    <ToggleSwitch IsOn="True" Margin="10 10 10 10"/>
+                    <ToggleSwitch IsOn="True" Margin="10 10 10 10"/>
+                </StackPanel>
+            </StackPanel>
             
-        </SplitView>
+
+        </StackPanel>
+        <StackPanel Grid.Column="1" Grid.Row="1" x:Name="securitySettingsPanel" Background="White" Visibility="Collapsed">
+            <TextBlock x:Name="securitySettingsTitle"
+                               Text="Security Settings"
+                               Margin="10 10 10 10"
+                               Padding="10"
+                               FontSize="30"
+                               FontWeight="SemiBold"
+                               Foreground="#80dc3d"/>
+            <TextBlock x:Name="resetPasswordText"
+                       Text="Reset Password"
+                       FontSize="20"
+                       Padding="10"
+                       Margin="10 10 10 10"
+                       />
+            <TextBlock x:Name="resetPasswordInformation"
+                       Text="Click the button below to reset your password"
+                       Margin="20 0 0 0"
+                       />
+            <Button x:Name="resetPasswordButton"
+                    Padding="10"
+                    Margin="20 10 10 10"
+                    Background="#dc533d"
+                    Foreground="White"
+                    Content="Reset Password"
+                    Click="resetPasswordButton_Click"/>
+
+            <TextBlock x:Name="anotherText"
+                       Text="More Security Options"
+                       FontSize="20"
+                       Padding="10"
+                       Margin="10 10 10 10"
+                       />
+        </StackPanel>
+        <StackPanel Grid.Column="1" Grid.Row="1" x:Name="privacySettingsPanel" Background="White" Visibility="Collapsed">
+            <TextBlock x:Name="privacySettingsTitle"
+                               Text="Privacy Settings"
+                               Margin="10 10 10 10"
+                               Padding="10"
+                               FontSize="30"
+                               FontWeight="SemiBold"
+                               Foreground="#80dc3d"/>
+            <TextBlock x:Name="privacyText"
+                       Text="Your details"
+                       FontSize="20"
+                       Padding="10"
+                       Margin="10 10 10 10"
+                       />
+            <TextBlock x:Name="privacyInformation"
+                       Text="These settings control who can see your details. Turning these options off will mean that your doctor or pharmacy will be unable to see that section of your account"
+                       Margin="20 0 0 0"
+                       TextWrapping="Wrap"
+                       />
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10" Padding="10 10 10 10">
+
+                <StackPanel>
+                    <TextBlock Text="Option" Padding="10" Margin="10 10 10 10" FontWeight="SemiBold"/>
+                    <TextBlock Text="Personal Details" VerticalAlignment="Center" Padding="10" Margin="10 10 10 10"/>
+                    <TextBlock Text="Prescription History" VerticalAlignment="Center" Padding="10" Margin="10 10 10 10"/>
+                    <TextBlock Text="Pharmacies you've visited" VerticalAlignment="Center" Padding="10" Margin="10 10 10 10"/>
+                    <TextBlock Text="Doctors you've visited" VerticalAlignment="Center" Padding="10" Margin="10 10 10 10"/>
+                </StackPanel>
 
 
+                <StackPanel>
+                    <TextBlock Text="Pharmacies" Padding="10" Margin="10 10 10 10" FontWeight="SemiBold"/>
+                    <ToggleSwitch IsOn="True" Margin="10 10 10 10"/>
+                    <ToggleSwitch IsOn="True" Margin="10 10 10 10"/>
+                    <ToggleSwitch IsOn="True" Margin="10 10 10 10"/>
+                    <ToggleSwitch IsOn="True" Margin="10 10 10 10"/>
+                </StackPanel>
+
+                <StackPanel>
+                    <TextBlock Text="Doctors" Padding="10" Margin="10 10 10 10" FontWeight="SemiBold"/>
+                    <ToggleSwitch IsOn="True" Margin="10 10 10 10"/>
+                    <ToggleSwitch IsOn="True" Margin="10 10 10 10"/>
+                    <ToggleSwitch IsOn="True" Margin="10 10 10 10"/>
+                    <ToggleSwitch IsOn="True" Margin="10 10 10 10"/>
+                </StackPanel>
+            </StackPanel>
+
+        </StackPanel>
     </Grid>
 </Page>

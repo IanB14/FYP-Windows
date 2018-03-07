@@ -158,6 +158,7 @@
     <Content Include="Resources\mapIcons\userCurrentLocationSMALL.png" />
     <Content Include="Resources\menuIcons\doctor.png" />
     <Content Include="Resources\menuIcons\greyMenuIcons\prescriptionsGRAY.png" />
+    <Content Include="Resources\menuIcons\greyMenuIcons\userGray.png" />
     <Content Include="Resources\menuIcons\list.png" />
     <Content Include="Resources\menuIcons\pharmacyCross.png" />
     <Content Include="Resources\menuIcons\prescriptions.png" />
